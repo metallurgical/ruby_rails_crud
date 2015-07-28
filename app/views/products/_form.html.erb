@@ -1,0 +1,15 @@
+<%= form_for [@category, @product] do |f| %>
+	<p>
+		<%= f.label :pro_name, "Product Name" %>
+		<%= f.text_field :pro_name %>
+	</p>
+	<p>
+		<%= f.label :pro_price, "Product Price" %>
+		<%= f.text_field :pro_price %>
+	</p>
+	<p>
+		<%= f.label :pro_color, "Product Color" %>
+		<%= f.text_field :pro_color %>
+	</p>
+	<%= f.submit %>
+<% end %>

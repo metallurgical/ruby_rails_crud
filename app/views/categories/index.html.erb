@@ -1,0 +1,37 @@
+<h1>List Of Category</h1>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<tr>
+		<th>No.</th>
+		<th>Catgeory Name</th>
+		<th>Category Type</th>
+		<th>Category Quantity</th>
+		<th>Operations</th>
+	</tr>
+	<%  if @categories.present? 
+		a = 0
+		@categories.each do |d| 
+		%>
+		<tr>
+			<td><%= a +=1 %></td>
+			<td><%= d.cat_name %></td>
+			<td><%= d.cat_type %></td>
+			<td><%= d.cat_quantity %></td>
+			<td>
+				<%= link_to "Show", action: 'show', id: d.id %> |
+				<%= link_to "Edit", action: 'edit', id: d.id %> |
+				<%= link_to "Delete", { action: 'destroy', id: d.id }, 
+										method: 'delete',
+										data: { 
+											confirm: 'Are u sure to delete this data???'
+										} 
+				%>
+			</td>
+		</tr>
+		<% end 
+		else %>
+	<tr>
+		<td colspan="5">No category yet</td>
+	</tr>
+	<% end %>
+</table>

@@ -1,0 +1,70 @@
+<h1>Details Category</h1>
+
+<fieldset>
+	<legend>My Category</legend>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>: <%= @category.cat_name %></td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>: <%= @category.cat_type %></td>
+		</tr>
+		<tr>
+			<td>Quantity</td>
+			<td>: <%= @category.cat_quantity %></td>
+		</tr>
+	</table>
+	<%= link_to "Back To List", categories_path %>
+</fieldset>
+
+<h4>List Products Under This Category</h4>
+
+<%= link_to "Add New Product", new_category_product_path( @category ) %>
+
+<fieldset>
+	<legend>Products</legend>
+	<table cellpadding="5" cellspacing="0" border="1">
+		<tr>
+			<th>No.</th>
+			<th>Product Name</th>			
+			<th>Product Color</th>
+			<th>Product Price (RM)</th>
+			<th>Operations</th>
+		</tr>
+		<% 
+		a = 0
+		total = 0
+		if @category.products.present?
+			@category.products.each do |d|
+			total += d.pro_price  
+			%>
+			<tr>
+				<td><%= a +=1 %></td>
+				<td><%= d.pro_name %></td>				
+				<td><%= d.pro_color %></td>
+				<td><%= 'RM ' << d.pro_price.to_s %></td>
+				<td>
+					<%= link_to "Edit", edit_category_product_path(@category, d) %> |
+					<%= link_to "Delete", category_product_path(@category, d), :method => 'delete', :data => { confirm: 'Are u sure to delete this!!!'} %>
+				</td>
+			</tr>
+			<% 
+			end 
+		else %>
+			<tr>
+				<td colspan="5">No product available under this category</td>
+			</tr>
+		<% end %>
+		<tr>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>			
+			<th>Total :</th>
+			<td><%= 'RM ' << number_with_precision(total, :precision => 2).to_s %></td>
+			<th>&nbsp;</th>
+		</tr>
+	</table>
+	
+</fieldset>
+

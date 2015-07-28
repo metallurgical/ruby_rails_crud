@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crud</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= link_to "List Category", categories_path %> | 
+<%= link_to "Add New Category", new_category_path %> | 
+<%= link_to 'Search Category', controller: "categories",  :action => 'search_form' %>
+<br/>
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+<br/>
+<%= yield %>
+
+</body>
+</html>
