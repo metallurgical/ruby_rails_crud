@@ -7,9 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to "List Category", categories_path %> | 
-<%= link_to "Add New Category", new_category_path %> | 
-<%= link_to 'Search Category', controller: "categories",  :action => 'search_form' %>
+<% if checkCredential.present? %>
+	<%= link_to "List Category", categories_path %> | 
+	<%= link_to "Add New Category", new_category_path %> | 
+	<%= link_to 'Search Category', controller: "categories",  :action => 'search_form' %> |
+	<%= link_to 'Sign Out', { :action => 'signout', :controller => 'users'}, method: :get %>
+<%	else %>
+	<%= link_to "Sign In", {:action => 'signin', :controller => 'users'}, method: :get %>
+<% end %>
+
 <br/>
 <% if flash[:notice] %>
 	<%= flash[:notice] %>

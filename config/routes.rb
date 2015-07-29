@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
-  #get 'products/index'
-  #get 'products/new'
-  #get 'products/create'
-  #get 'products/edit'
-  #get 'products/destroy'
-  get 'categories/search_form'
+ 
+  root 'users#signin'
+  post 'users/signinProcess'
+  get 'users/signin' => 'users#signin'
+  get 'users/signout' => 'users#signout'
+  post 'users/signin' => 'users#signinProcess'
 
+  resources:users
+
+  get 'categories/search_form'  
   resources:categories do
     resources:products
   end

@@ -1,0 +1,29 @@
+<h1>Sigin</h1>
+<%= @k %>
+--Form 1
+<%= form_tag users_signinProcess_path, { :method => 'post'}  do |f| %>
+	<p>
+		<%= label_tag :email %><br/>
+		<%= text_field_tag :email %>
+	</p>
+	<p>
+		<%= label_tag :password %><br/>
+		<%= password_field_tag :password %>
+	</p>
+	<%= submit_tag 'Sign In' %>
+<% end %>
+<br/>
+<br/>
+or using this --form 2
+<hr/>
+  <%= form_for :user  do |f| %>
+	<p>
+		<%= f.label :email %><br/>
+		<%= f.text_field :email %>
+	</p>
+	<p>
+		<%= f.label :password %><br/>
+		<%= f.password_field :password %>
+	</p>
+	<%= f.submit 'Sign In' %>
+<% end %>

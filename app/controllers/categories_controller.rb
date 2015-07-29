@@ -58,11 +58,14 @@ class CategoriesController < ApplicationController
 		end
 	end
 
+
 	private
 		def permit_params
 			parameters = :cat_name, :cat_type, :cat_quantity
 			params.require(:category).permit( parameters )
 		end
+
+
 
 	private 
 		def find_category

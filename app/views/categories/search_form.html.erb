@@ -3,7 +3,7 @@
 
 <fieldset>
 	<legend>Search Form</legend>
-	<%= form_tag categories_search_form_path, {method: 'get', remote: true, class: 'myform'} do %>
+	<%= form_tag categories_search_form_path, {method: 'get', class: 'myform'} do %>
 		<%= label_tag :Search, 'Category : ' %>
 		<%= text_field_tag :cat_type %>
 		<%= submit_tag 'Find Now' %>
