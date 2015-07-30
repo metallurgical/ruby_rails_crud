@@ -8,9 +8,13 @@ class CategoriesController < ApplicationController
 
 	def new
 		@category = Category.new
+		respond_to do |format|
+	        format.html 
+	        format.js #-> loads /views/cookbooks/index.js.erb
+      	end
 	end
 
-	def show
+	def show		
 	end
 
 	def create

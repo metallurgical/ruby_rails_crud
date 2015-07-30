@@ -3,7 +3,7 @@
 <head>
   <title>Crud</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -15,7 +15,7 @@
 <%	else %>
 	<%= link_to "Sign In", {:action => 'signin', :controller => 'users'}, method: :get %>
 <% end %>
-
+<%= link_to "Add New Category", new_category_path , :remote => true %>
 <br/>
 <% if flash[:notice] %>
 	<%= flash[:notice] %>
